@@ -1,0 +1,71 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.0.3 Chrome/140.0.7339.249 Electron/38.7.0 Safari/537.36" version="29.0.3" pages="2">
+  <diagram name="MVP Architecture" id="RIfmOmUQC8wqpErD9I0u">
+    <mxGraphModel dx="7706" dy="5269" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pPaJNjtsEckRfLD8fb7m-1" value="React Frontend (Static Web App)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pPaJNjtsEckRfLD8fb7m-2" value=".NET 8 Web API (Azure App Service)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="310" y="40" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pPaJNjtsEckRfLD8fb7m-3" value="Azure SQL Database" style="shape=cylinder;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="610" y="30" width="110" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="pPaJNjtsEckRfLD8fb7m-4" style="endArrow=block;strokeWidth=2;" edge="1" parent="1" source="pPaJNjtsEckRfLD8fb7m-1" target="pPaJNjtsEckRfLD8fb7m-2" />
+        <mxCell id="pPaJNjtsEckRfLD8fb7m-5" style="endArrow=block;strokeWidth=2;" edge="1" parent="1" source="pPaJNjtsEckRfLD8fb7m-2" target="pPaJNjtsEckRfLD8fb7m-3" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="aC2ZMJDaMAN1VJacnos6" name="Strona-2">
+    <mxGraphModel dx="1282" dy="698" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="a9WCLK33CjgyrBUFsSei-12" value="React Frontend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="258" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-13" value=".NET API (App Service)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="350" y="258" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-14" value="Azure SQL" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="660" y="200" width="160" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-15" value="Azure Blob Storage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="660" y="318" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-16" value="Azure Service Bus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="350" y="378" width="240" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-17" value="Azure Function (Jobs)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="80" y="378" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-18" value="App Insights&#xa;(Telemetry)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="870" y="248" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-19" style="endArrow=classic;strokeWidth=2;" edge="1" parent="1" source="a9WCLK33CjgyrBUFsSei-12" target="a9WCLK33CjgyrBUFsSei-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-20" style="endArrow=classic;strokeWidth=2;" edge="1" parent="1" source="a9WCLK33CjgyrBUFsSei-13" target="a9WCLK33CjgyrBUFsSei-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-21" style="endArrow=classic;strokeWidth=2;" edge="1" parent="1" source="a9WCLK33CjgyrBUFsSei-13" target="a9WCLK33CjgyrBUFsSei-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-22" style="endArrow=classic;strokeWidth=2;" edge="1" parent="1" source="a9WCLK33CjgyrBUFsSei-13" target="a9WCLK33CjgyrBUFsSei-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-23" style="endArrow=classic;strokeWidth=2;" edge="1" parent="1" source="a9WCLK33CjgyrBUFsSei-17" target="a9WCLK33CjgyrBUFsSei-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-24" style="endArrow=classic;dashed=1;strokeColor=#b85450;strokeWidth=2;" edge="1" parent="1" source="a9WCLK33CjgyrBUFsSei-13" target="a9WCLK33CjgyrBUFsSei-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a9WCLK33CjgyrBUFsSei-25" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;b style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Overview&lt;/b&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 16px; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;This system provides real-time logistics order tracking with AI-assisted delay analysis. The frontend (React) interacts with a .NET API hosted on Azure. The backend stores shipment data in SQL, handles file storage in Blob Storage, and uses Service Bus + Azure Functions for asynchronous processing such as ETA predictions and periodic updates from carriers.&lt;/span&gt;&lt;/div&gt;&lt;blockquote style=&quot;margin: 0 0 0 40px; border: none; padding: 0px;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;/blockquote&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="468" width="1000" height="180" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
