@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\LogisticsTracker\\",
+  "WorkspaceRootPath": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|c:\\users\\user\\source\\repos\\logisticstracker\\logisticstracker\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|solutionrelative:logisticstracker\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|c:\\users\\user\\workspace\\logistics-apps\\api\\logisticstracker\\logisticstracker\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|solutionrelative:logisticstracker\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|c:\\users\\user\\source\\repos\\logisticstracker\\logisticstracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|c:\\users\\user\\workspace\\logistics-apps\\api\\logisticstracker\\logisticstracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|solutionrelative:logisticstracker\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|c:\\users\\user\\workspace\\logistics-apps\\api\\logisticstracker\\logisticstracker\\logisticstracker.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|solutionrelative:logisticstracker\\logisticstracker.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|c:\\users\\user\\workspace\\logistics-apps\\api\\logisticstracker\\logisticstracker\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9D591188-274E-4A90-91C1-FAC597DF67DF}|LogisticsTracker\\LogisticsTracker.csproj|solutionrelative:logisticstracker\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,10 +31,36 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\appsettings.json",
+              "RelativeDocumentMoniker": "LogisticsTracker\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\appsettings.json",
+              "RelativeToolTip": "LogisticsTracker\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-01T22:18:46.875Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LogisticsTracker",
+              "DocumentMoniker": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\LogisticsTracker.csproj",
+              "RelativeDocumentMoniker": "LogisticsTracker\\LogisticsTracker.csproj",
+              "ToolTip": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\LogisticsTracker.csproj",
+              "RelativeToolTip": "LogisticsTracker\\LogisticsTracker.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-01T22:16:22.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\LogisticsTracker\\LogisticsTracker\\Properties\\launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "LogisticsTracker\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\LogisticsTracker\\LogisticsTracker\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\Properties\\launchSettings.json",
               "RelativeToolTip": "LogisticsTracker\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -37,11 +71,11 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\LogisticsTracker\\LogisticsTracker\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\Program.cs",
               "RelativeDocumentMoniker": "LogisticsTracker\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\LogisticsTracker\\LogisticsTracker\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\workspace\\logistics-apps\\api\\LogisticsTracker\\LogisticsTracker\\Program.cs",
               "RelativeToolTip": "LogisticsTracker\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-01T22:09:14.364Z",
               "EditorCaption": ""
