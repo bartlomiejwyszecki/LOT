@@ -1,5 +1,5 @@
-﻿using Order.Domain.ValueObjects;
-using Orders.Domain.ValueObjects;
+﻿using Order.Domain.Rules;
+using Order.Domain.ValueObjects;
 
 namespace Order.Domain.Entities
 {
@@ -27,6 +27,8 @@ namespace Order.Domain.Entities
 
         public void UpdateStatus(OrderStatus newStatus)
         {
+            OrderStatusTransitionRule.ValidateTransition(Status, newStatus);
+            
             Status = newStatus;
             UpdatedAt = DateTime.UtcNow;
         }

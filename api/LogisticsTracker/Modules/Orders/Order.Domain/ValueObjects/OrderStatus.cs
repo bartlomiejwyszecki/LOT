@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Order.Domain.ValueObjects;
 
-namespace Order.Domain.ValueObjects
+public enum OrderStatus
 {
-    internal class OrderStatus
-    {
-    }
+    Pending = 0,
+    Confirmed = 1,
+    Processing = 2,
+    Shipped = 3,
+    Delivered = 4,
+    Cancelled = 5
 }
