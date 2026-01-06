@@ -1,4 +1,4 @@
-using Order.Domain.ValueObjects;
+using Orders.Domain.ValueObjects;
 
 namespace Orders.Application.DTOs;
 
@@ -10,7 +10,7 @@ public record AddressDto
     public string PostalCode { get; init; } = string.Empty;
     public string Country { get; init; } = string.Empty;
 
-    public static AddressDto FromValueObject(Address address)
+    public static AddressDto FromEntity(Address address)
     {
         return new AddressDto
         {
