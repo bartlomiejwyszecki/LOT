@@ -1,10 +1,7 @@
-using Order.Domain.ValueObjects;
+using Orders.Domain.ValueObjects;
 
-namespace Order.Domain.Rules;
+namespace Orders.Domain.Rules;
 
-/// <summary>
-/// Defines and validates order status transitions according to the order state machine.
-/// </summary>
 public static class OrderStatusTransitionRule
 {
     private static readonly Dictionary<OrderStatus, HashSet<OrderStatus>> ValidTransitions = new()
@@ -17,12 +14,6 @@ public static class OrderStatusTransitionRule
         { OrderStatus.Cancelled, new HashSet<OrderStatus>() }
     };
 
-    /// <summary>
-    /// Validates if a status transition is allowed. Throws if the transition is invalid.
-    /// </summary>
-    /// <param name="currentStatus">The current order status</param>
-    /// <param name="newStatus">The desired new order status</param>
-    /// <exception cref="InvalidOperationException">Thrown when the transition is invalid</exception>
     public static void ValidateTransition(OrderStatus currentStatus, OrderStatus newStatus)
     {
         if (currentStatus == newStatus)
@@ -42,11 +33,6 @@ public static class OrderStatusTransitionRule
         }
     }
 
-    /// <summary>
-    /// Gets all valid statuses that can be transitioned to from the current status.
-    /// </summary>
-    /// <param name="currentStatus">The current order status</param>
-    /// <returns>Collection of valid next statuses, or empty set if status is unknown</returns>
     public static IReadOnlySet<OrderStatus> GetValidNextStatuses(OrderStatus currentStatus)
     {
         if (!ValidTransitions.ContainsKey(currentStatus))
@@ -55,10 +41,6 @@ public static class OrderStatusTransitionRule
         return ValidTransitions[currentStatus];
     }
 
-    /// <summary>
-    /// Determines if a status is terminal (cannot transition to any other state).
-    /// </summary>
-    /// <param name="status">The status to check</param>
     public static bool IsTerminalState(OrderStatus status)
     {
         return ValidTransitions.ContainsKey(status) && 

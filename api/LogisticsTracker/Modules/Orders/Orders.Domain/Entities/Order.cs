@@ -1,7 +1,7 @@
-﻿using Order.Domain.Rules;
-using Order.Domain.ValueObjects;
+﻿using Orders.Domain.Rules;
+using Orders.Domain.ValueObjects;
 
-namespace Order.Domain.Entities
+namespace Orders.Domain.Entities
 {
     public class Order : Entity
     {
