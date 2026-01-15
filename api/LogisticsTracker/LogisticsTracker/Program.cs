@@ -6,14 +6,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register modules
 builder.Services.AddOrdersModule(builder.Configuration);
-// builder.Services.AddTrackingModule(builder.Configuration);
-// builder.Services.AddAiAnalyzerModule(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
