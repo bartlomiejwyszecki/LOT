@@ -1,17 +1,20 @@
+using Orders.Api;
+
 var builder = WebApplication.CreateBuilder(args);
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Configuration.AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true);
+}
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// TODO: Register modules here
-// builder.Services.AddOrdersModule(builder.Configuration);
-// builder.Services.AddTrackingModule(builder.Configuration);
-// builder.Services.AddAiAnalyzerModule(builder.Configuration);
+builder.Services.AddOrdersModule(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
