@@ -26,6 +26,7 @@ bld/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+appsettings.Local.json
 
 ## NuGet Packages
 *.nupkg
