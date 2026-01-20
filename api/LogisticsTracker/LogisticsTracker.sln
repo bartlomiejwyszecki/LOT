@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Infrastructure", "Mo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Api", "Modules\Orders\Orders.Api\Orders.Api.csproj", "{FE2071D4-6126-4713-8F34-A196121FCC62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orders.Tests", "Modules\Orders\Orders.Tests\Orders.Tests.csproj", "{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,18 @@ Global
 		{FE2071D4-6126-4713-8F34-A196121FCC62}.Release|x64.Build.0 = Release|Any CPU
 		{FE2071D4-6126-4713-8F34-A196121FCC62}.Release|x86.ActiveCfg = Release|Any CPU
 		{FE2071D4-6126-4713-8F34-A196121FCC62}.Release|x86.Build.0 = Release|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Debug|x64.Build.0 = Debug|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Debug|x86.Build.0 = Debug|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Release|x64.ActiveCfg = Release|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Release|x64.Build.0 = Release|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Release|x86.ActiveCfg = Release|Any CPU
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +111,7 @@ Global
 		{7301D539-101D-3C9A-05AA-50912A1D5921} = {57157A57-3CDB-46F2-939B-613503C72C46}
 		{717700D9-EEBB-4927-8525-C4048D48BAF8} = {57157A57-3CDB-46F2-939B-613503C72C46}
 		{FE2071D4-6126-4713-8F34-A196121FCC62} = {57157A57-3CDB-46F2-939B-613503C72C46}
+		{FCE2F3F2-58C8-5381-425D-C0571FBA12E3} = {57157A57-3CDB-46F2-939B-613503C72C46}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {54265E16-E30E-4D77-AFE3-D6A093D913D5}

@@ -5,9 +5,9 @@ namespace Orders.Domain.Entities
 {
     public class Order : Entity
     {
-        public string OrderNumber { get; private set; }
+        public string OrderNumber { get; private set; } = null!;
         public OrderStatus Status { get; private set; }
-        public Address ShippingAddress { get; private set; }
+        public Address ShippingAddress { get; private set; } = null!;
         public DateTime OrderDate { get; private set; }
 
         private Order() { }
