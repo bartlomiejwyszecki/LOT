@@ -8,7 +8,7 @@ public record AddressDto
     public string City { get; init; } = string.Empty;
     public string State { get; init; } = string.Empty;
     public string PostalCode { get; init; } = string.Empty;
-    public string Country { get; init; } = string.Empty;
+    public CountryCode Country { get; init; }
 
     public static AddressDto FromEntity(Address address)
     {
@@ -18,7 +18,7 @@ public record AddressDto
             City = address.City,
             State = address.State,
             PostalCode = address.PostalCode,
-            Country = address.Country
+            Country = address.Country,
         };
     }
 }

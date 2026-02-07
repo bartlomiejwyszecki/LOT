@@ -10,7 +10,7 @@ public record Address
 
     private Address() { }
 
-    public Address(string street, string city, string state, string postalCode, CountryCode country)
+    public Address(string street, string city, string state, string postalCode, string country)
     {
         if (string.IsNullOrWhiteSpace(street))
             throw new ArgumentException("Street cannot be empty", nameof(street));
@@ -18,15 +18,12 @@ public record Address
         if (string.IsNullOrWhiteSpace(city))
             throw new ArgumentException("City cannot be empty", nameof(city));
 
-        if (!Enum.IsDefined(typeof(CountryCode), country))
-            throw new ArgumentException(
-                "Country code must be a valid ISO 3166-1 alpha-3 country code (e.g., POL, DEU, FRA)", 
-                nameof(country));
+        var countryCode = CountryCodeValidator.Parse(country);
 
         Street = street;
         City = city;
         State = state ?? string.Empty;
         PostalCode = postalCode ?? string.Empty;
-        Country = country;
+        Country = countryCode;
     }
 }

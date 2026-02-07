@@ -13,7 +13,7 @@ public class AddressTests
     public void Constructor_ShouldThrowArgumentException_WhenStreetIsInvalid(string? invalidStreet)
     {
         // Arrange & Act
-        var action = () => new Address(invalidStreet!, "City", "State", "12345", "Country");
+        var action = () => new Address(invalidStreet!, "City", "State", "12345", "POL");
 
         // Assert
         action.Should().Throw<ArgumentException>()
@@ -28,7 +28,7 @@ public class AddressTests
     public void Constructor_ShouldThrowArgumentException_WhenCityIsInvalid(string? invalidCity)
     {
         // Arrange & Act
-        var action = () => new Address("Street", invalidCity!, "State", "12345", "Country");
+        var action = () => new Address("Street", invalidCity!, "State", "12345", "POL");
 
         // Assert
         action.Should().Throw<ArgumentException>()
@@ -36,19 +36,16 @@ public class AddressTests
             .WithMessage("City cannot be empty*");
     }
 
-    [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    [InlineData("   ")]
-    public void Constructor_ShouldThrowArgumentException_WhenCountryIsInvalid(string? invalidCountry)
+    [Fact]
+    public void Constructor_ShouldThrowArgumentException_WhenCountryIsInvalid()
     {
         // Arrange & Act
-        var action = () => new Address("Street", "City", "State", "12345", invalidCountry!);
+        var action = () => new Address("Street", "City", "State", "12345", "InvalidCountry");
 
         // Assert
         action.Should().Throw<ArgumentException>()
-            .WithParameterName("country")
-            .WithMessage("Country cannot be empty*");
+            .WithParameterName("countryCode")
+            .WithMessage("*ISO 3166-1 alpha-3*");
     }
 
     #endregion
@@ -61,7 +58,7 @@ public class AddressTests
     public void Constructor_ShouldSetStateToEmptyString_WhenStateIsNullOrEmpty(string? state)
     {
         // Act
-        var address = new Address("Street", "City", state!, "12345", "Country");
+        var address = new Address("Street", "City", state!, "12345", "POL");
 
         // Assert
         address.State.Should().Be(string.Empty);
@@ -73,10 +70,22 @@ public class AddressTests
     public void Constructor_ShouldSetPostalCodeToEmptyString_WhenPostalCodeIsNullOrEmpty(string? postalCode)
     {
         // Act
-        var address = new Address("Street", "City", "State", postalCode!, "Country");
+        var address = new Address("Street", "City", "State", postalCode!, "POL");
 
         // Assert
         address.PostalCode.Should().Be(string.Empty);
+    }
+
+    [Fact]
+    public void Constructor_ShouldCreateValidAddress_WithValidCountryCode()
+    {
+        // Act
+        var address = new Address("Kwiatowa", "Katowice", "Silesia", "40-850", "POL");
+
+        // Assert
+        address.Country.Should().Be(CountryCode.POL);
+        address.Street.Should().Be("Kwiatowa");
+        address.City.Should().Be("Katowice");
     }
 
     #endregion

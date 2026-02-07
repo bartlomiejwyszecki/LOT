@@ -45,7 +45,7 @@ public class CreateOrderCommandHandlerTests
         result.Status.Should().Be(OrderStatus.Pending);
         result.ShippingAddress.Street.Should().Be("Kwiatowa 15");
         result.ShippingAddress.City.Should().Be("Katowice");
-        result.ShippingAddress.Country.Should().Be("POL");
+        result.ShippingAddress.Country.Should().Be(CountryCode.POL);
     }
 
     [Fact]
@@ -164,6 +164,27 @@ public class CreateOrderCommandHandlerTests
 
         // Assert
         await action.Should().ThrowAsync<ArgumentException>()
-            .WithMessage("Country cannot be empty*");
+            .WithMessage("Country code cannot be empty. Must be a valid ISO 3166-1 alpha-3 country code (e.g., POL, DEU, FRA). (Parameter 'countryCode')");
+    }
+
+       [Fact]
+    public async Task HandleAsync_ShouldThrow_WhenCountryIsInInvalidFormat()
+    {
+        // Arrange
+        var command = new CreateOrderCommand(
+            OrderNumber: "ORD-006",
+            Street: "Kwiatowa 15",
+            City: "Katowice",
+            State: "Śląskie",
+            PostalCode: "40-850",
+            Country: "Polska" 
+        );
+
+        // Act
+        var action = async () => await _handler.HandleAsync(command);
+
+        // Assert
+        await action.Should().ThrowAsync<ArgumentException>()
+            .WithMessage($"Country code '{command.Country}' is invalid. Must be a valid ISO 3166-1 alpha-3 country code (e.g., POL, DEU, FRA). (Parameter 'countryCode')");
     }
 }

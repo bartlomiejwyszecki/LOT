@@ -76,7 +76,7 @@ public class GetOrderByOrderNumberQueryHandlerTests
 
         var address = new Address("Glowna", "Krakow", "Malopolskie", "31-999", "POL");
         var order = Order.Create(orderNumber, address);
-        order.UpdateStatus(OrderStatus.Processing);
+        order.UpdateStatus(OrderStatus.Confirmed);
 
         _mockRepository
             .Setup(r => r.GetByOrderNumberAsync(orderNumber, It.IsAny<CancellationToken>()))
@@ -89,7 +89,7 @@ public class GetOrderByOrderNumberQueryHandlerTests
         result.Should().NotBeNull();
         result!.Id.Should().Be(order.Id);
         result.OrderNumber.Should().Be(order.OrderNumber);
-        result.Status.Should().Be(OrderStatus.Processing);
+        result.Status.Should().Be(OrderStatus.Confirmed);
         result.OrderDate.Should().Be(order.OrderDate);
         result.CreatedAt.Should().Be(order.CreatedAt);
     }
