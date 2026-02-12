@@ -3,7 +3,7 @@ using Orders.Application.Interfaces;
 using Orders.Domain.Entities;
 using Orders.Domain.ValueObjects;
 
-namespace Orders.Tests.Unit.Application.Commands;
+namespace Orders.Tests.Application.Commands;
 
 public class CreateOrderCommandHandlerTests
 {
@@ -167,7 +167,7 @@ public class CreateOrderCommandHandlerTests
             .WithMessage("Country code cannot be empty. Must be a valid ISO 3166-1 alpha-3 country code (e.g., POL, DEU, FRA). (Parameter 'countryCode')");
     }
 
-       [Fact]
+    [Fact]
     public async Task HandleAsync_ShouldThrow_WhenCountryIsInInvalidFormat()
     {
         // Arrange

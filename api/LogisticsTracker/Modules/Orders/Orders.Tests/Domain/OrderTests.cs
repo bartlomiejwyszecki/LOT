@@ -1,7 +1,7 @@
 using Orders.Domain.Entities;
 using Orders.Domain.ValueObjects;
 
-namespace Orders.Tests.Unit.Domain;
+namespace Orders.Tests.Domain;
 
 public class OrderTests
 {

@@ -3,7 +3,7 @@ using Orders.Application.Queries.GetOrderByOrderNumber;
 using Orders.Domain.Entities;
 using Orders.Domain.ValueObjects;
 
-namespace Orders.Tests.Unit.Application.Queries;
+namespace Orders.Tests.Application.Queries;
 
 public class GetOrderByOrderNumberQueryHandlerTests
 {
