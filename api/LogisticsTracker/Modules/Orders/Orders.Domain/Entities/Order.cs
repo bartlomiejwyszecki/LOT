@@ -22,6 +22,9 @@ namespace Orders.Domain.Entities
 
         public static Order Create(string orderNumber, Address shippingAddress)
         {
+            if (string.IsNullOrWhiteSpace(orderNumber))
+                throw new ArgumentException("Order number cannot be empty or whitespace.", nameof(orderNumber));
+
             return new Order(orderNumber, shippingAddress);
         }
 
