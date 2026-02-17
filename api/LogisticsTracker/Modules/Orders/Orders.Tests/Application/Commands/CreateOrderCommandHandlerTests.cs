@@ -2,6 +2,8 @@ using Orders.Application.Commands.CreateOrder;
 using Orders.Application.Interfaces;
 using Orders.Domain.Entities;
 using Orders.Domain.ValueObjects;
+using Orders.Infrastructure.Persistence.Repositories;
+using Orders.Tests.Infrastructure.Fixtures;
 
 namespace Orders.Tests.Application.Commands;
 
@@ -186,5 +188,74 @@ public class CreateOrderCommandHandlerTests
         // Assert
         await action.Should().ThrowAsync<ArgumentException>()
             .WithMessage($"Country code '{command.Country}' is invalid. Must be a valid ISO 3166-1 alpha-3 country code (e.g., POL, DEU, FRA). (Parameter 'countryCode')");
+    }
+}
+
+public class CreateOrderCommandHandlerDuplicateOrderNumberTests : IAsyncLifetime
+{
+    private DatabaseFixture _fixture = null!;
+    private IOrderRepository _repository = null!;
+    private CreateOrderCommandHandler _handler = null!;
+
+    public async Task InitializeAsync()
+    {
+        _fixture = new DatabaseFixture();
+        await _fixture.InitializeAsync();
+        _repository = new OrderRepository(_fixture.DbContext);
+        _handler = new CreateOrderCommandHandler(_repository);
+    }
+
+    public async Task DisposeAsync()
+    {
+        await _fixture.DisposeAsync();
+    }
+
+    [Fact]
+    public async Task HandleAsync_ShouldThrowInvalidOperationException_WhenOrderNumberAlreadyExists()
+    {
+        // Arrange
+        var firstOrder = new TestDataBuilder().WithOrderNumber("ORD-DUP-001").Build();
+        await _repository.AddAsync(firstOrder, CancellationToken.None);
+        await _repository.SaveChangesAsync(CancellationToken.None);
+
+        var command = new CreateOrderCommand(
+            OrderNumber: "ORD-DUP-001",
+            Street: "Kwiatowa 15",
+            City: "Katowice",
+            State: "Śląskie",
+            PostalCode: "40-850",
+            Country: "POL"
+        );
+
+        // Act
+        var action = () => _handler.HandleAsync(command, CancellationToken.None);
+
+        // Assert
+        await action.Should().ThrowAsync<InvalidOperationException>()
+            .WithMessage("*Order with number 'ORD-DUP-001' already exists*");
+    }
+
+    [Fact]
+    public async Task HandleAsync_ShouldSucceed_WhenOrderNumberIsUnique()
+    {
+        // Arrange
+        var command = new CreateOrderCommand(
+            OrderNumber: "ORD-UNIQUE-NEW",
+            Street: "Kwiatowa 15",
+            City: "Katowice",
+            State: "Śląskie",
+            PostalCode: "40-850",
+            Country: "POL"
+        );
+
+        // Act
+        var result = await _handler.HandleAsync(command, CancellationToken.None);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.OrderNumber.Should().Be("ORD-UNIQUE-NEW");
+        
+        var savedOrder = await _repository.GetByOrderNumberAsync("ORD-UNIQUE-NEW", CancellationToken.None);
+        savedOrder.Should().NotBeNull();
     }
 }

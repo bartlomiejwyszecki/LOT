@@ -16,6 +16,11 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Ord
 
     public async Task<OrderDto> HandleAsync(CreateOrderCommand command, CancellationToken cancellationToken = default)
     {
+        var existingOrder = await _orderRepository.GetByOrderNumberAsync(command.OrderNumber, cancellationToken);
+        
+        if (existingOrder is not null)
+            throw new InvalidOperationException($"Order with number '{command.OrderNumber}' already exists.");
+
         var address = new Address(
             command.Street,
             command.City,
