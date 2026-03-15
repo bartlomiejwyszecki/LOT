@@ -1,73 +1,38 @@
 using Auth.Application.Interfaces;
 using Auth.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
+using System.Collections.Concurrent;
 
 namespace Auth.Infrastructure.Services;
 
 public class RefreshTokenService : IRefreshTokenService
 {
-    private readonly AuthDbContextImpl _dbContext;
+    private static readonly ConcurrentDictionary<Guid, RefreshToken> _tokens = new();
 
-    public RefreshTokenService(AuthDbContextImpl dbContext)
+    public Task StoreRefreshTokenAsync(Guid userId, string refreshToken, DateTime expiryDate)
     {
-        _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+        var token = new RefreshToken(userId, refreshToken, expiryDate);
+        _tokens[userId] = token;
+        return Task.CompletedTask;
     }
 
-    public string GenerateRefreshToken(Guid userId)
+    public Task<bool> ValidateRefreshTokenAsync(Guid userId, string refreshToken)
     {
-        var token = Guid.NewGuid().ToString("N");
-        var expiresAt = DateTime.UtcNow.AddDays(7);
+        if (string.IsNullOrWhiteSpace(refreshToken))
+            return Task.FromResult(false);
 
-        var refreshToken = new RefreshToken(userId, token, expiresAt);
-        _dbContext.RefreshTokens.Add(refreshToken);
-        _dbContext.SaveChanges();
+        if (!_tokens.TryGetValue(userId, out var storedToken))
+            return Task.FromResult(false);
 
-        return token;
+        var isValid = storedToken.Token == refreshToken && storedToken.IsValid();
+        return Task.FromResult(isValid);
     }
 
-    public Guid? ValidateRefreshToken(string token)
+    public Task InvalidateRefreshTokenAsync(Guid userId)
     {
-        if (string.IsNullOrWhiteSpace(token))
-            return null;
-
-        var refreshToken = _dbContext.RefreshTokens
-            .FirstOrDefault(rt => rt.Token == token);
-
-        if (refreshToken == null || !refreshToken.IsValid())
-            return null;
-
-        return refreshToken.UserId;
-    }
-
-    public void RevokeRefreshToken(string token)
-    {
-        if (string.IsNullOrWhiteSpace(token))
-            return;
-
-        var refreshToken = _dbContext.RefreshTokens
-            .FirstOrDefault(rt => rt.Token == token);
-
-        if (refreshToken != null)
-        {
-            refreshToken.Revoke();
-            _dbContext.SaveChanges();
-        }
-    }
-
-    public void RevokeAllUserTokens(Guid userId)
-    {
-        var tokens = _dbContext.RefreshTokens
-            .Where(rt => rt.UserId == userId && !rt.IsRevoked)
-            .ToList();
-
-        foreach (var token in tokens)
+        if (_tokens.TryGetValue(userId, out var token))
         {
             token.Revoke();
         }
-
-        if (tokens.Any())
-        {
-            _dbContext.SaveChanges();
-        }
+        return Task.CompletedTask;
     }
 }
