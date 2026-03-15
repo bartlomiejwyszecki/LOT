@@ -1,3 +1,6 @@
+using Auth.Domain.Exceptions;
+using Auth.Domain.ValueObjects;
+
 namespace Auth.Domain.Entities;
 
 public class User : Entity
