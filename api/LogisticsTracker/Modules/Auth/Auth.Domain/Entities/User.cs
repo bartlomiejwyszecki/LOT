@@ -5,6 +5,14 @@ namespace Auth.Domain.Entities;
 
 public class User : Entity
 {
+    private static readonly Role[] SelfSelectableRoles =
+    [
+        Role.Merchant,
+        Role.Recipient,
+        Role.Carrier,
+        Role.Courier
+    ];
+
     private const int EmailVerificationTokenExpiryHours = 24;
     private const int PasswordResetTokenExpiryHours = 1;
 
@@ -185,13 +193,25 @@ public class User : Entity
         UpdatedAt = DateTime.UtcNow;
     }
 
-    public void ChangeRole(Role newRole)
+    public void SelectRole(Role newRole)
     {
-        if (newRole == null)
+        if (!IsEmailVerified)
         {
-            throw new ArgumentNullException(nameof(newRole));
+            throw new AuthDomainException("Email must be verified before selecting a role.");
         }
 
+        if (!SelfSelectableRoles.Contains(newRole))
+        {
+            throw new UnauthorizedRoleChangeException(
+                "Only Merchant, Recipient, Carrier, and Courier roles can be selected by the user.");
+        }
+
+        Role = newRole;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void ChangeRole(Role newRole)
+    {
         Role = newRole;
         UpdatedAt = DateTime.UtcNow;
     }

@@ -10,14 +10,6 @@ namespace Auth.Application.Services;
 
 public class AuthenticationService : IAuthenticationService
 {
-    private static readonly Role[] SelectableRoles =
-    [
-        Role.Merchant,
-        Role.Recipient,
-        Role.Carrier,
-        Role.Courier
-    ];
-
     private static readonly TimeSpan RefreshTokenLifetime = TimeSpan.FromDays(7);
 
     private readonly IUserRepository _userRepository;
@@ -99,23 +91,12 @@ public class AuthenticationService : IAuthenticationService
         var user = await _userRepository.GetByIdAsync(request.UserId)
             ?? throw new AuthDomainException("User was not found.");
 
-        if (!user.IsEmailVerified)
-        {
-            throw new AuthDomainException("Email must be verified before selecting a role.");
-        }
-
         if (!Enum.TryParse<Role>(request.Role, true, out var selectedRole))
         {
             throw new UnauthorizedRoleChangeException("Selected role is not supported.");
         }
 
-        if (!SelectableRoles.Contains(selectedRole))
-        {
-            throw new UnauthorizedRoleChangeException(
-                "Only Merchant, Recipient, Carrier, and Courier roles can be selected by the user.");
-        }
-
-        user.ChangeRole(selectedRole);
+        user.SelectRole(selectedRole);
 
         await _userRepository.UpdateAsync(user);
     }
