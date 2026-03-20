@@ -1,3 +1,4 @@
+using Auth.Api;
 using Orders.Api;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddOrdersModule(builder.Configuration);
+builder.Services.AddAuthModule(builder.Configuration);
 
 var app = builder.Build();
 
