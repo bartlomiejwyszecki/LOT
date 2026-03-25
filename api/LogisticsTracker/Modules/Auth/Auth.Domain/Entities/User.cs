@@ -38,6 +38,14 @@ public class User : Entity
 
     public bool IsActive { get; private set; }
 
+    private User()
+    {
+        Email = null!;
+        FirstName = string.Empty;
+        LastName = string.Empty;
+        Role = Role.User;
+    }
+
     private User(
         Email email,
         string firstName,

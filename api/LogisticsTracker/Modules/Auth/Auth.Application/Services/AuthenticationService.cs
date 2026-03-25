@@ -16,20 +16,22 @@ public class AuthenticationService : IAuthenticationService
     private readonly IPasswordHashingService _passwordHashingService;
     private readonly IJwtTokenService _jwtTokenService;
     private readonly IRefreshTokenService _refreshTokenService;
-    private readonly IEmailService _emailService;
+    // TO DO IN NEXT STEPS
+    // private readonly IEmailService _emailService;
 
     public AuthenticationService(
         IUserRepository userRepository,
         IPasswordHashingService passwordHashingService,
         IJwtTokenService jwtTokenService,
-        IRefreshTokenService refreshTokenService,
-        IEmailService emailService)
+        IRefreshTokenService refreshTokenService
+        // IEmailService emailService
+        )
     {
         _userRepository = userRepository;
         _passwordHashingService = passwordHashingService;
         _jwtTokenService = jwtTokenService;
         _refreshTokenService = refreshTokenService;
-        _emailService = emailService;
+        // _emailService = emailService;
     }
 
     public async Task<Guid> RegisterAsync(RegisterRequestDto request)
@@ -69,7 +71,7 @@ public class AuthenticationService : IAuthenticationService
         user.GenerateEmailVerificationToken(code);
 
         await _userRepository.UpdateAsync(user);
-        await _emailService.SendVerificationCodeAsync(user.Email.Value, code);
+        // await _emailService.SendVerificationCodeAsync(user.Email.Value, code);
     }
 
     public async Task VerifyEmailAsync(VerifyEmailRequestDto request)
@@ -219,7 +221,7 @@ public class AuthenticationService : IAuthenticationService
         user.GeneratePasswordResetToken(code);
 
         await _userRepository.UpdateAsync(user);
-        await _emailService.SendPasswordResetCodeAsync(user.Email.Value, code);
+        // await _emailService.SendPasswordResetCodeAsync(user.Email.Value, code);
     }
 
     public async Task ResetPasswordAsync(PasswordResetRequestDto request)
