@@ -1,4 +1,5 @@
 using Auth.Application.DTOs.Requests;
+using Auth.Application.DTOs.Responses;
 using Auth.Application.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,5 +25,16 @@ public class AuthController : ControllerBase
         var userId = await _authenticationService.RegisterAsync(request);
 
         return StatusCode(StatusCodes.Status201Created, userId);
+    }
+
+    [HttpPost("signin")]
+    [ProducesResponseType(typeof(LoginResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> SignIn([FromBody] LoginRequestDto request)
+    {
+        var response = await _authenticationService.LoginAsync(request);
+
+        return Ok(response);
     }
 }
