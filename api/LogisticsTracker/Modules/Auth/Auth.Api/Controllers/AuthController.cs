@@ -27,6 +27,16 @@ public class AuthController : ControllerBase
         return StatusCode(StatusCodes.Status201Created, userId);
     }
 
+    [HttpPost("verify-email")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> VerifyEmail([FromBody] VerifyEmailRequestDto request)
+    {
+        await _authenticationService.VerifyEmailAsync(request);
+
+        return Ok();
+    }
+
     [HttpPost("signin")]
     [ProducesResponseType(typeof(LoginResponseDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
