@@ -37,6 +37,16 @@ public class AuthController : ControllerBase
         return Ok();
     }
 
+    [HttpPost("select-role")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> SelectRole([FromBody] SelectRoleRequestDto request)
+    {
+        await _authenticationService.SelectRoleAsync(request);
+
+        return Ok();
+    }
+
     [HttpPost("signin")]
     [ProducesResponseType(typeof(LoginResponseDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
